@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand-blue-50: #eff6ff;
+  --color-brand-blue-100: #dbeafe;
+  --color-brand-blue-200: #bfdbfe;
+  --color-brand-blue-300: #93c5fd;
+  --color-brand-blue-400: #60a5fa;
+  --color-brand-blue-500: #3b82f6;
+  --color-brand-blue-600: #2563eb;
+  --color-brand-blue-700: #1d4ed8;
+  --color-brand-blue-800: #1e40af;
+  --color-brand-blue-900: #1e3a8a;
+  --color-brand-blue-950: #172554;
+
+  --color-brand-green-50: #ecfdf5;
+  --color-brand-green-100: #d1fae5;
+  --color-brand-green-200: #a7f3d0;
+  --color-brand-green-300: #6ee7b7;
+  --color-brand-green-400: #34d399;
+  --color-brand-green-500: #10b981;
+  --color-brand-green-600: #059669;
+  --color-brand-green-700: #047857;
+  --color-brand-green-800: #065f46;
+  --color-brand-green-900: #064e3b;
+  --color-brand-green-950: #022c22;
+
+  --color-primary: var(--color-brand-blue-600);
+  --color-primary-hover: var(--color-brand-blue-700);
+  --color-accent: var(--color-brand-green-500);
+
+  /* Deep luxury dark theme background */
+  --color-slate-950: #0f172a;
+  --color-luxury-bg: #090d16;
+  --color-luxury-card: #111827;
+
+  /* Custom fonts mapped to tailwind classes */
+  --font-display: var(--font-outfit), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+/* Base custom designs */
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #090d16;
+    --foreground: #f1f5f9;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Custom premium styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass-panel {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.text-gradient-brand {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-dark-gold {
+  background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+}
+
+.brand-border-glow:hover {
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.35);
+  border-color: rgba(37, 99, 235, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* Shimmer animations for CTAs */
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 3s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
