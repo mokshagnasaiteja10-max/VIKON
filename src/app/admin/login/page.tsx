@@ -56,7 +56,9 @@ export default function AdminLoginPage() {
 
         {/* Brand Header */}
         <div className="text-center mb-8">
-          <Building2 className="h-10 w-10 text-blue-600 mx-auto mb-3" />
+          <div className="bg-white p-1 rounded-md h-12 w-12 flex items-center justify-center shrink-0 mx-auto mb-3">
+            <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
+          </div>
           <h2 className="text-2xl font-extrabold font-display text-white tracking-tight">
             Vikon CMS
           </h2>

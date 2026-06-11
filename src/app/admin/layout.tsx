@@ -89,8 +89,10 @@ export default function AdminLayout({
       {/* Sidebar for Desktop */}
       <aside className="hidden md:flex flex-col w-64 bg-slate-900 border-r border-slate-800 shrink-0">
         <div className="h-20 flex items-center px-6 border-b border-slate-800">
-          <Link href="/" className="flex items-center space-x-2">
-            <Building2 className="h-6 w-6 text-blue-600" />
+          <Link href="/" className="flex items-center space-x-3">
+            <div className="bg-white p-1 rounded-md h-8 w-8 flex items-center justify-center shrink-0">
+              <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
+            </div>
             <span className="font-display font-extrabold text-sm tracking-tight text-white uppercase">
               Vikon Admin
             </span>
@@ -139,8 +141,10 @@ export default function AdminLayout({
       <div className="flex-grow flex flex-col min-w-0">
         {/* Top bar for Mobile */}
         <header className="md:hidden h-16 bg-slate-900 border-b border-slate-800 px-4 flex items-center justify-between z-30">
-          <Link href="/" className="flex items-center space-x-2">
-            <Building2 className="h-5 w-5 text-blue-600" />
+          <Link href="/" className="flex items-center space-x-3">
+            <div className="bg-white p-1 rounded-md h-7 w-7 flex items-center justify-center shrink-0">
+              <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
+            </div>
             <span className="font-display font-extrabold text-xs tracking-tight text-white uppercase">
               Vikon CMS
             </span>
