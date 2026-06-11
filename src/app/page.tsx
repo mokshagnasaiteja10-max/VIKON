@@ -38,9 +38,9 @@ export default async function HomePage() {
         {/* Background Image with Overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-10000"
-          style={{ backgroundImage: `url('/images/hero_bg.png')`, opacity: 0.35 }}
+          style={{ backgroundImage: `url('/images/hero_bg.png')`, opacity: 0.06 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
         
         {/* Green Light Glow Effects */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
