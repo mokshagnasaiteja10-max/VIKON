@@ -31,9 +31,12 @@
   --color-accent: var(--color-emerald-500);
 
   /* Deep luxury dark theme background */
-  --color-slate-950: #0f172a;
-  --color-luxury-bg: #090d16;
-  --color-luxury-card: #111827;
+  --color-slate-950: #03162b; /* Deep Navy Blue */
+  --color-slate-900: #052549; /* Navy Blue card */
+  --color-slate-850: #062e59; /* Navy Blue hover */
+  --color-slate-800: #073465; /* Navy Blue border */
+  --color-luxury-bg: #03162b;
+  --color-luxury-card: #052549;
 
   /* Custom fonts mapped to tailwind classes */
   --font-display: var(--font-outfit), sans-serif;
@@ -48,8 +51,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #090d16;
-    --foreground: #f1f5f9;
+    --background: #03162b; /* Deep Navy Blue */
+    --foreground: #f8fafc; /* Silver-White */
   }
 }
 
@@ -119,7 +122,7 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #03162b;
 }
 ::-webkit-scrollbar-thumb {
   background: #0b53a4;

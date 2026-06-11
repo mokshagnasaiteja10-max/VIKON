@@ -80,9 +80,9 @@ export default function AdminDashboard() {
   }
 
   const statCards = [
-    { name: "Total Properties", value: metrics.properties, icon: Home, color: "text-amber-500", bg: "bg-amber-500/10", href: "/admin/properties" },
-    { name: "Portfolio Projects", value: metrics.projects, icon: Briefcase, color: "text-blue-500", bg: "bg-blue-500/10", href: "/admin/projects" },
-    { name: "Testimonials", value: metrics.testimonials, icon: Quote, color: "text-purple-500", bg: "bg-purple-500/10", href: "/admin/testimonials" },
+    { name: "Total Properties", value: metrics.properties, icon: Home, color: "text-blue-500", bg: "bg-blue-500/10", href: "/admin/properties" },
+    { name: "Portfolio Projects", value: metrics.projects, icon: Briefcase, color: "text-emerald-500", bg: "bg-emerald-500/10", href: "/admin/projects" },
+    { name: "Testimonials", value: metrics.testimonials, icon: Quote, color: "text-slate-400", bg: "bg-slate-500/10", href: "/admin/testimonials" },
     { name: "Total Leads", value: metrics.leads, icon: UserSquare2, color: "text-emerald-500", bg: "bg-emerald-500/10", href: "/admin/leads" }
   ];
 

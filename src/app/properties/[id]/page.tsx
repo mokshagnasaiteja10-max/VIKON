@@ -37,7 +37,7 @@ export default async function PropertyDetailPage({ params }: PropertyDetailPageP
         <div className="border-b border-slate-200 dark:border-slate-800 pb-6 mb-8">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
             <span className={`px-3 py-1 text-xs font-bold rounded-full text-white ${
-              property.status === "Ready to Move" ? "bg-emerald-600" : "bg-amber-600"
+              property.status === "Ready to Move" ? "bg-emerald-600" : "bg-blue-600"
             }`}>
               {property.status}
             </span>

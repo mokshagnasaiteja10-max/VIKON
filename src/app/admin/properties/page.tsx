@@ -238,7 +238,7 @@ function AdminPropertiesContent() {
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-slate-200 text-sm sm:text-base">{property.name}</span>
                         <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${
-                          property.status === "Ready to Move" ? "bg-emerald-500/10 text-emerald-500" : "bg-amber-500/10 text-amber-500"
+                          property.status === "Ready to Move" ? "bg-emerald-500/10 text-emerald-500" : "bg-blue-500/10 text-blue-500"
                         }`}>
                           {property.status}
                         </span>

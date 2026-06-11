@@ -42,9 +42,9 @@ export default async function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
         
-        {/* Gold Light Glow Effects */}
+        {/* Green Light Glow Effects */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
           <div className="max-w-3xl">
@@ -188,7 +188,7 @@ export default async function HomePage() {
                   style={{ backgroundImage: `url('${property.images[0]}')` }}
                 >
                   <span className={`absolute top-4 left-4 px-3 py-1 text-xs font-bold rounded-full text-white ${
-                    property.status === "Ready to Move" ? "bg-emerald-600" : "bg-amber-600"
+                    property.status === "Ready to Move" ? "bg-emerald-600" : "bg-blue-600"
                   }`}>
                     {property.status}
                   </span>

@@ -97,7 +97,7 @@ export default function PropertiesList({ initialProperties }: PropertiesListProp
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
                 <span className={`absolute top-4 left-4 px-3 py-1 text-xs font-bold rounded-full text-white shadow-sm ${
-                  property.status === "Ready to Move" ? "bg-emerald-600" : "bg-amber-600"
+                  property.status === "Ready to Move" ? "bg-emerald-600" : "bg-blue-600"
                 }`}>
                   {property.status}
                 </span>
