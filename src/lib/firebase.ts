@@ -1,6 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -18,15 +19,17 @@ const isFirebaseEnabled = typeof window !== "undefined"
 let app;
 let auth: any = null;
 let db: any = null;
+let storage: any = null;
 
 if (isFirebaseEnabled) {
   try {
     app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
     auth = getAuth(app);
     db = getFirestore(app);
+    storage = getStorage(app);
   } catch (error) {
     console.error("Firebase client initialization error:", error);
   }
 }
 
-export { app, auth, db, isFirebaseEnabled };
+export { app, auth, db, storage, isFirebaseEnabled };

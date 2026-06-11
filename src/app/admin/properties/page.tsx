@@ -17,6 +17,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { Property } from "@/types";
+import ImageUploader from "@/components/admin/ImageUploader";
 
 function AdminPropertiesContent() {
   const searchParams = useSearchParams();
@@ -418,13 +419,29 @@ function AdminPropertiesContent() {
               <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 Image URLs (Comma Separated)
               </label>
-              <input
-                type="text"
-                placeholder="/images/hero_bg.png, https://images.unsplash.com/..."
-                value={imagesInput}
-                onChange={(e) => setImagesInput(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600 text-slate-200"
-              />
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+                <div className="md:col-span-3">
+                  <input
+                    type="text"
+                    placeholder="/images/hero_bg.png, https://images.unsplash.com/..."
+                    value={imagesInput}
+                    onChange={(e) => setImagesInput(e.target.value)}
+                    className="w-full h-10 px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600 text-slate-200"
+                  />
+                </div>
+                <div className="md:col-span-1">
+                  <ImageUploader 
+                    onUploadSuccess={(url) => {
+                      const current = imagesInput.trim();
+                      if (current) {
+                        setImagesInput(`${current}, ${url}`);
+                      } else {
+                        setImagesInput(url);
+                      }
+                    }} 
+                  />
+                </div>
+              </div>
               <p className="text-[10px] text-slate-500">Add absolute image links or local asset paths. Separate multiple links with commas.</p>
             </div>
           </div>
