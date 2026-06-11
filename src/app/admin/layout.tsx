@@ -84,11 +84,11 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex text-slate-100">
+    <div className="min-h-screen bg-[#F5F5F5] flex text-slate-800">
       
       {/* Sidebar for Desktop */}
-      <aside className="hidden md:flex flex-col w-64 bg-slate-900 border-r border-slate-800 shrink-0">
-        <div className="h-20 flex items-center px-6 border-b border-slate-800">
+      <aside className="hidden md:flex flex-col w-64 bg-[#003366] border-r border-[#002244] shrink-0 text-white">
+        <div className="h-20 flex items-center px-6 border-b border-[#002244]">
           <Link href="/" className="flex items-center space-x-3">
             <div className="bg-white p-1 rounded-md h-8 w-8 flex items-center justify-center shrink-0">
               <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
@@ -98,7 +98,7 @@ export default function AdminLayout({
             </span>
           </Link>
         </div>
-
+ 
         {/* Sidebar Links */}
         <nav className="flex-grow p-4 space-y-1">
           {navItems.map((item) => {
@@ -110,37 +110,37 @@ export default function AdminLayout({
                 href={item.href}
                 className={`flex items-center px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
                   active
-                    ? "bg-blue-600 text-slate-950 font-bold"
-                    : "text-slate-400 hover:text-white hover:bg-slate-800/50"
+                    ? "bg-[#FFD700] text-[#003366] font-bold"
+                    : "text-blue-100 hover:text-white hover:bg-blue-800/50"
                 }`}
               >
-                <Icon className={`h-4.5 w-4.5 mr-3 ${active ? "text-slate-950" : "text-blue-600"}`} />
+                <Icon className={`h-4.5 w-4.5 mr-3 ${active ? "text-[#003366]" : "text-blue-300"}`} />
                 {item.name}
               </Link>
             );
           })}
         </nav>
-
+ 
         {/* User Card & Logout */}
-        <div className="p-4 border-t border-slate-800 space-y-3">
-          <div className="px-4 py-2 bg-slate-950/60 rounded-lg text-xs truncate">
-            <p className="text-slate-500">Logged in as:</p>
-            <p className="font-bold text-slate-350 truncate">{currentUser.email}</p>
+        <div className="p-4 border-t border-[#002244] space-y-3">
+          <div className="px-4 py-2 bg-[#002244]/50 rounded-lg text-xs truncate">
+            <p className="text-blue-200">Logged in as:</p>
+            <p className="font-bold text-white truncate">{currentUser.email}</p>
           </div>
           <button
             onClick={handleLogout}
-            className="flex items-center w-full px-4 py-2.5 bg-rose-600/10 hover:bg-rose-650 text-rose-500 hover:text-white rounded-lg text-xs font-semibold transition-colors"
+            className="flex items-center w-full px-4 py-2.5 bg-rose-600/20 hover:bg-rose-600 text-rose-200 hover:text-white rounded-lg text-xs font-semibold transition-colors"
           >
             <LogOut className="h-4.5 w-4.5 mr-3" />
             Logout Session
           </button>
         </div>
       </aside>
-
+ 
       {/* Main Content Area */}
-      <div className="flex-grow flex flex-col min-w-0">
+      <div className="flex-grow flex flex-col min-w-0 bg-[#F9FAFB]">
         {/* Top bar for Mobile */}
-        <header className="md:hidden h-16 bg-slate-900 border-b border-slate-800 px-4 flex items-center justify-between z-30">
+        <header className="md:hidden h-16 bg-[#003366] border-b border-[#002244] px-4 flex items-center justify-between z-30 text-white">
           <Link href="/" className="flex items-center space-x-3">
             <div className="bg-white p-1 rounded-md h-7 w-7 flex items-center justify-center shrink-0">
               <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
@@ -151,30 +151,30 @@ export default function AdminLayout({
           </Link>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 text-slate-400 hover:text-white focus:outline-none"
+            className="p-2 text-blue-200 hover:text-white focus:outline-none"
           >
             {sidebarOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </header>
-
+ 
         {/* Mobile Navigation Drawer */}
         <div
-          className={`md:hidden fixed inset-0 z-20 bg-slate-950/90 backdrop-blur-sm transition-opacity duration-300 ${
+          className={`md:hidden fixed inset-0 z-20 bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300 ${
             sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
           onClick={() => setSidebarOpen(false)}
         >
           <div
-            className={`w-64 h-full bg-slate-900 border-r border-slate-800 flex flex-col transition-transform duration-300 transform ${
+            className={`w-64 h-full bg-[#003366] border-r border-[#002244] flex flex-col transition-transform duration-300 transform text-white ${
               sidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="h-16 flex items-center px-6 border-b border-slate-800 justify-between">
+            <div className="h-16 flex items-center px-6 border-b border-[#002244] justify-between">
               <span className="font-display font-extrabold text-sm tracking-tight text-white uppercase">
                 Navigation
               </span>
-              <button onClick={() => setSidebarOpen(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setSidebarOpen(false)} className="text-blue-200 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -190,21 +190,21 @@ export default function AdminLayout({
                     onClick={() => setSidebarOpen(false)}
                     className={`flex items-center px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
                       active
-                        ? "bg-blue-600 text-slate-950 font-bold"
-                        : "text-slate-400 hover:text-white hover:bg-slate-850"
+                        ? "bg-[#FFD700] text-[#003366] font-bold"
+                        : "text-blue-100 hover:text-white hover:bg-blue-800/50"
                     }`}
                   >
-                    <Icon className={`h-4.5 w-4.5 mr-3 ${active ? "text-slate-950" : "text-blue-600"}`} />
+                    <Icon className={`h-4.5 w-4.5 mr-3 ${active ? "text-[#003366]" : "text-blue-300"}`} />
                     {item.name}
                   </Link>
                 );
               })}
             </nav>
-
-            <div className="p-4 border-t border-slate-800 space-y-3">
+ 
+            <div className="p-4 border-t border-[#002244] space-y-3">
               <button
                 onClick={handleLogout}
-                className="flex items-center w-full px-4 py-2.5 bg-rose-600/10 hover:bg-rose-600 text-rose-500 hover:text-white rounded-lg text-xs font-semibold transition-colors"
+                className="flex items-center w-full px-4 py-2.5 bg-rose-600/20 hover:bg-rose-600 text-rose-200 hover:text-white rounded-lg text-xs font-semibold transition-colors"
               >
                 <LogOut className="h-4.5 w-4.5 mr-3" />
                 Logout Session
@@ -212,11 +212,11 @@ export default function AdminLayout({
             </div>
           </div>
         </div>
-
+ 
         {/* Content body */}
-        <main className="flex-grow p-6 sm:p-10 overflow-y-auto">{children}</main>
+        <main className="flex-grow p-6 sm:p-10 overflow-y-auto bg-[#F9FAFB] text-slate-800">{children}</main>
       </div>
-
+ 
     </div>
   );
 }
