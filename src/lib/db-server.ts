@@ -55,6 +55,50 @@ interface MockSchema {
   leads: Lead[];
 }
 
+const isKvEnabled = !!process.env.KV_REST_API_URL && !!process.env.KV_REST_API_TOKEN;
+
+async function getKvDb(): Promise<MockSchema | null> {
+  if (!isKvEnabled) return null;
+  try {
+    const res = await fetch(`${process.env.KV_REST_API_URL}/get/vikon_db`, {
+      headers: {
+        Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+      },
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      console.error("Vercel KV read error status:", res.status);
+      return null;
+    }
+    const data = await res.json();
+    if (data && data.result) {
+      return JSON.parse(data.result) as MockSchema;
+    }
+    return null;
+  } catch (error) {
+    console.error("Failed to read from Vercel KV:", error);
+    return null;
+  }
+}
+
+async function setKvDb(data: MockSchema): Promise<boolean> {
+  if (!isKvEnabled) return false;
+  try {
+    const res = await fetch(`${process.env.KV_REST_API_URL}/set/vikon_db`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return res.ok;
+  } catch (error) {
+    console.error("Failed to write to Vercel KV:", error);
+    return false;
+  }
+}
+
 // Ensure the local JSON file exists and return content
 function readMockDb(): MockSchema {
   try {
@@ -94,6 +138,33 @@ function writeMockDb(data: MockSchema) {
   }
 }
 
+async function getActiveDb(): Promise<MockSchema> {
+  if (isKvEnabled) {
+    const kvData = await getKvDb();
+    if (kvData) {
+      return kvData;
+    }
+    const initialDb: MockSchema = {
+      properties: initialProperties,
+      projects: initialProjects,
+      testimonials: initialTestimonials,
+      siteSettings: initialSiteSettings,
+      leads: []
+    };
+    await setKvDb(initialDb);
+    return initialDb;
+  }
+  return readMockDb();
+}
+
+async function saveActiveDb(data: MockSchema) {
+  if (isKvEnabled) {
+    await setKvDb(data);
+    return;
+  }
+  writeMockDb(data);
+}
+
 // ==================== DATABASE ACTIONS ====================
 
 // --- SITE SETTINGS ---
@@ -112,7 +183,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       console.error("Firebase site settings read error, falling back:", e);
     }
   }
-  return readMockDb().siteSettings;
+  return (await getActiveDb()).siteSettings;
 }
 
 export async function saveSiteSettings(settings: SiteSettings): Promise<SiteSettings> {
@@ -121,9 +192,9 @@ export async function saveSiteSettings(settings: SiteSettings): Promise<SiteSett
     await setDoc(docRef, settings);
     return settings;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   db.siteSettings = settings;
-  writeMockDb(db);
+  await saveActiveDb(db);
   return settings;
 }
 
@@ -149,7 +220,7 @@ export async function getProperties(): Promise<Property[]> {
       console.error("Firebase properties read error, falling back:", e);
     }
   }
-  return readMockDb().properties;
+  return (await getActiveDb()).properties;
 }
 
 export async function saveProperty(property: Property): Promise<Property> {
@@ -158,14 +229,14 @@ export async function saveProperty(property: Property): Promise<Property> {
     await setDoc(docRef, property);
     return property;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   const index = db.properties.findIndex((p) => p.id === property.id);
   if (index >= 0) {
     db.properties[index] = property;
   } else {
     db.properties.push(property);
   }
-  writeMockDb(db);
+  await saveActiveDb(db);
   return property;
 }
 
@@ -175,11 +246,11 @@ export async function deleteProperty(id: string): Promise<boolean> {
     await deleteDoc(docRef);
     return true;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   const filtered = db.properties.filter((p) => p.id !== id);
   if (filtered.length !== db.properties.length) {
     db.properties = filtered;
-    writeMockDb(db);
+    await saveActiveDb(db);
     return true;
   }
   return false;
@@ -206,7 +277,7 @@ export async function getProjects(): Promise<Project[]> {
       console.error("Firebase projects read error, falling back:", e);
     }
   }
-  return readMockDb().projects;
+  return (await getActiveDb()).projects;
 }
 
 export async function saveProject(project: Project): Promise<Project> {
@@ -215,14 +286,14 @@ export async function saveProject(project: Project): Promise<Project> {
     await setDoc(docRef, project);
     return project;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   const index = db.projects.findIndex((p) => p.id === project.id);
   if (index >= 0) {
     db.projects[index] = project;
   } else {
     db.projects.push(project);
   }
-  writeMockDb(db);
+  await saveActiveDb(db);
   return project;
 }
 
@@ -232,11 +303,11 @@ export async function deleteProject(id: string): Promise<boolean> {
     await deleteDoc(docRef);
     return true;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   const filtered = db.projects.filter((p) => p.id !== id);
   if (filtered.length !== db.projects.length) {
     db.projects = filtered;
-    writeMockDb(db);
+    await saveActiveDb(db);
     return true;
   }
   return false;
@@ -263,7 +334,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       console.error("Firebase testimonials read error, falling back:", e);
     }
   }
-  return readMockDb().testimonials;
+  return (await getActiveDb()).testimonials;
 }
 
 export async function saveTestimonial(testimonial: Testimonial): Promise<Testimonial> {
@@ -272,14 +343,14 @@ export async function saveTestimonial(testimonial: Testimonial): Promise<Testimo
     await setDoc(docRef, testimonial);
     return testimonial;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   const index = db.testimonials.findIndex((t) => t.id === testimonial.id);
   if (index >= 0) {
     db.testimonials[index] = testimonial;
   } else {
     db.testimonials.push(testimonial);
   }
-  writeMockDb(db);
+  await saveActiveDb(db);
   return testimonial;
 }
 
@@ -289,11 +360,11 @@ export async function deleteTestimonial(id: string): Promise<boolean> {
     await deleteDoc(docRef);
     return true;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   const filtered = db.testimonials.filter((t) => t.id !== id);
   if (filtered.length !== db.testimonials.length) {
     db.testimonials = filtered;
-    writeMockDb(db);
+    await saveActiveDb(db);
     return true;
   }
   return false;
@@ -316,7 +387,7 @@ export async function getLeads(): Promise<Lead[]> {
       console.error("Firebase leads read error, falling back:", e);
     }
   }
-  const leads = readMockDb().leads;
+  const leads = (await getActiveDb()).leads;
   return leads.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 }
 
@@ -326,14 +397,14 @@ export async function saveLead(lead: Lead): Promise<Lead> {
     await setDoc(docRef, lead);
     return lead;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   const index = db.leads.findIndex((l) => l.id === lead.id);
   if (index >= 0) {
     db.leads[index] = lead;
   } else {
     db.leads.push(lead);
   }
-  writeMockDb(db);
+  await saveActiveDb(db);
   return lead;
 }
 
@@ -343,11 +414,11 @@ export async function deleteLead(id: string): Promise<boolean> {
     await deleteDoc(docRef);
     return true;
   }
-  const db = readMockDb();
+  const db = await getActiveDb();
   const filtered = db.leads.filter((l) => l.id !== id);
   if (filtered.length !== db.leads.length) {
     db.leads = filtered;
-    writeMockDb(db);
+    await saveActiveDb(db);
     return true;
   }
   return false;
