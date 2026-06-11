@@ -35,15 +35,22 @@ export default async function ContactPage() {
 
             <div className="space-y-4">
               {/* Address Card */}
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm flex items-start gap-4">
+              <a 
+                href="https://maps.app.goo.gl/DKf6GScPm6j3Aku88" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-600/50 rounded-xl p-5 shadow-sm flex items-start gap-4 transition-all"
+              >
                 <MapPin className="h-6 w-6 text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm text-slate-900 dark:text-white">Bhimavaram Office</h4>
+                  <h4 className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-1.5">
+                    Office Location <span className="text-[10px] text-blue-600 font-normal">(Open Map)</span>
+                  </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
                     {settings.address}
                   </p>
                 </div>
-              </div>
+              </a>
 
               {/* Phone Card */}
               <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm flex items-start gap-4">
@@ -113,10 +120,9 @@ export default async function ContactPage() {
         </div>
 
         {/* Map Frame */}
-        <div className="w-full h-96 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
-          {/* Map centering on Bhimavaram town */}
+        <div className="relative group w-full h-96 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.4539829986345!2d81.52220491535787!3d16.537248331189196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a362cc71df6c88f%3A0xe54ef02dcbc6ffbe!2sBhimavaram%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.5694297400135!2d81.50842417535775!3d16.533122099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a362d3a66c03e5f%3A0x331f46533f1d3e3b!2sVIKON%20CONSTRUCTIONS!5e0!3m2!1sen!2sin!4v1718000000000!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -124,6 +130,17 @@ export default async function ContactPage() {
             loading="lazy"
             title={`${settings.companyName} Location`}
           />
+          {/* Overlay link */}
+          <div className="absolute bottom-4 right-4 z-10">
+            <a
+              href="https://maps.app.goo.gl/DKf6GScPm6j3Aku88"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-slate-950 text-xs font-bold rounded-lg shadow-lg uppercase tracking-wider transition-colors"
+            >
+              Open in Google Maps
+            </a>
+          </div>
         </div>
 
       </div>

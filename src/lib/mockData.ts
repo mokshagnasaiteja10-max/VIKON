@@ -6,7 +6,7 @@ export const initialSiteSettings: SiteSettings = {
   phone: "094919 75555",
   whatsapp: "919491975555", // No +, spaces or dashes
   email: "chaitanyavarma@vikongroup.in",
-  address: "D.No. 4-12-85/A, Rayalam Road, Near Asr Nagar, Bhimavaram, Andhra Pradesh - 534204",
+  address: "PADMALAYA THEATRE, ROAD, Raayalam, Rayalam Rural, Andhra Pradesh 534208",
   heroTitle: "Building Premium Landmarks in Bhimavaram",
   heroSubtitle: "Turnkey Civil Construction, Deep Pile Foundations, and Premium 2 BHK / 3 BHK Vaastu-Compliant Apartments built with unmatched quality and trust.",
   tagline: "Quality in Every Square Foot",
