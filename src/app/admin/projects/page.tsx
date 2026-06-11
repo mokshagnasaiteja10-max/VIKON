@@ -274,7 +274,7 @@ function AdminProjectsContent() {
               <input
                 type="text"
                 required
-                placeholder="e.g. Sri Balaji Towers"
+                placeholder="e.g. Vikon Towers"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600 text-slate-200"

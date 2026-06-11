@@ -30,7 +30,7 @@ export default async function AboutPage() {
               Our Journey & Dedication
             </h2>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
-              Established in Bhimavaram, Sri Balaji Construction started with a simple vision: to construct buildings that landowners and investors can rely on for generations. In the delta region of West Godavari, soil conditions require deep engineering expertise. We recognized early on that foundation strength is paramount, leading us to specialize in deep bored cast-in-situ pile foundations.
+              Established in Bhimavaram, Vikon Constructions started with a simple vision: to construct buildings that landowners and investors can rely on for generations. In the delta region of West Godavari, soil conditions require deep engineering expertise. We recognized early on that foundation strength is paramount, leading us to specialize in deep bored cast-in-situ pile foundations.
             </p>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
               Over the years, we have expanded our services to turnkey individual houses, multi-story apartments, schools, and commercial landmarks. We bring absolute transparency to every project, offering raw material testing sheets, structural engineer approvals, and regular video status reports to our clients.
@@ -155,7 +155,7 @@ export default async function AboutPage() {
               <span className="text-xs text-blue-600 font-bold uppercase tracking-wider">Founder & Managing Director</span>
               <h3 className="text-2xl font-bold font-display text-slate-900 dark:text-white">Sri K. Ramesh Balaji</h3>
               <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                With over 18 years of technical expertise in civil contracting and soil mechanics, Sri K. Ramesh Balaji leads the architectural and foundation design divisions at Sri Balaji Constructions. Under his guidance, the firm has pioneered safety checks for bored pile concrete capping systems in alluvial delta regions.
+                With over 18 years of technical expertise in civil contracting and soil mechanics, Sri K. Ramesh Balaji leads the architectural and foundation design divisions at Vikon Constructions. Under his guidance, the firm has pioneered safety checks for bored pile concrete capping systems in alluvial delta regions.
               </p>
               <div className="pt-2 italic text-slate-650 dark:text-slate-355 text-xs border-t border-slate-100 dark:border-slate-800">
                 &ldquo;Every structure we deliver carries our absolute stamp of soil-stability vetting and structural longevity.&rdquo;

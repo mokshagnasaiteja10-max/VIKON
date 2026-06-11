@@ -11,7 +11,7 @@ export interface User {
   isDemo?: boolean;
 }
 
-const DEMO_USER_EMAIL = "admin@balajiconstructions.com";
+const DEMO_USER_EMAIL = "admin@vikonconstructions.com";
 const DEMO_USER_PASSWORD = "admin";
 const DEMO_SESSION_KEY = "balaji_admin_session";
 

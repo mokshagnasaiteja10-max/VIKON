@@ -24,8 +24,8 @@
       "bhk": 3
     },
     {
-      "id": "balaji-emerald-heights",
-      "name": "Balaji Emerald Heights",
+      "id": "vikon-emerald-heights",
+      "name": "Vikon Emerald Heights",
       "location": "Asr Nagar, Bhimavaram",
       "type": "Apartment",
       "status": "Under Construction",
@@ -42,7 +42,7 @@
         "Children's Play Area",
         "Possession in 6 Months"
       ],
-      "description": "Located in the highly sought-after Asr Nagar area, Balaji Emerald Heights is a premium residential community. The project is constructed using deep bored pile foundations to ensure solid safety against local soft-clay soil conditions. Featuring modern amenities and elegant layout styling.",
+      "description": "Located in the highly sought-after Asr Nagar area, Vikon Emerald Heights is a premium residential community. The project is constructed using deep bored pile foundations to ensure solid safety against local soft-clay soil conditions. Featuring modern amenities and elegant layout styling.",
       "price": "₹38 Lakhs onwards",
       "bhk": 2
     },
@@ -89,8 +89,8 @@
       "created_at": "2024-11-15T00:00:00.000Z"
     },
     {
-      "id": "sri-balaji-castle",
-      "name": "Sri Balaji Castle",
+      "id": "vikon-castle",
+      "name": "Vikon Castle",
       "type": "Ongoing Apartments",
       "location": "Asr Nagar, Bhimavaram",
       "description": "Our current flagship project featuring low-density, highly spacious 2 & 3 BHK flats. The structure is reinforced with heavy steel rods and deep pile foundation to prevent any seismic or settlement threats.",
@@ -128,7 +128,7 @@
       "id": "testi-1",
       "author_name": "G. Satyanarayana Murthy",
       "role": "Retired Bank Manager & Property Buyer",
-      "quote": "I purchased a 3 BHK flat in Sri Sai Ram Residency. The construction quality is exemplary. Unlike other builders who compromise on steel and sand, Balaji Constructions provides proper certificates and allowed us to inspect concrete mixing at every stage. Fully Vaastu compliant too!",
+      "quote": "I purchased a 3 BHK flat in Sri Sai Ram Residency. The construction quality is exemplary. Unlike other builders who compromise on steel and sand, Vikon Constructions provides proper certificates and allowed us to inspect concrete mixing at every stage. Fully Vaastu compliant too!",
       "rating": 5,
       "created_at": "2025-12-05T00:00:00.000Z"
     },
@@ -136,7 +136,7 @@
       "id": "testi-2",
       "author_name": "K. Ranga Rao",
       "role": "Landowner (Joint Venture Partner)",
-      "quote": "We partnered with Sri Balaji Constructions for a joint venture on our 800 sq. yards land in Asr Nagar. Their transparent agreement, dedication to using pile foundations due to soft soil, and prompt share distribution made the entire process stress-free. Highly recommended!",
+      "quote": "We partnered with Vikon Constructions for a joint venture on our 800 sq. yards land in Asr Nagar. Their transparent agreement, dedication to using pile foundations due to soft soil, and prompt share distribution made the entire process stress-free. Highly recommended!",
       "rating": 5,
       "created_at": "2026-01-20T00:00:00.000Z"
     },
@@ -150,11 +150,11 @@
     }
   ],
   "siteSettings": {
-    "companyName": "Sri Balaji Construction & Real Estate",
+    "companyName": "Vikon Constructions",
     "logoUrl": "/images/logo.png",
     "phone": "+91 98765 43210",
     "whatsapp": "919876543210",
-    "email": "info@balajiconstructions.com",
+    "email": "info@vikonconstructions.com",
     "address": "D.No. 4-12-85/A, Rayalam Road, Near Asr Nagar, Bhimavaram, Andhra Pradesh - 534204",
     "heroTitle": "Building Premium Landmarks in Bhimavaram",
     "heroSubtitle": "Turnkey Civil Construction, Deep Pile Foundations, and Premium 2 BHK / 3 BHK Vaastu-Compliant Apartments built with unmatched quality and trust.",

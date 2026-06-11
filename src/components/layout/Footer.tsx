@@ -16,8 +16,10 @@ export default function Footer({ settings }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Intro */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2 group">
-              <Building2 className="h-8 w-8 text-blue-600" />
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="bg-white p-1 rounded-md h-10 w-10 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
+              </div>
               <div className="flex flex-col">
                 <span className="font-display font-extrabold text-lg tracking-tight text-white">
                   {settings.companyName}

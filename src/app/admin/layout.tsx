@@ -92,7 +92,7 @@ export default function AdminLayout({
           <Link href="/" className="flex items-center space-x-2">
             <Building2 className="h-6 w-6 text-blue-600" />
             <span className="font-display font-extrabold text-sm tracking-tight text-white uppercase">
-              Balaji Admin
+              Vikon Admin
             </span>
           </Link>
         </div>
@@ -142,7 +142,7 @@ export default function AdminLayout({
           <Link href="/" className="flex items-center space-x-2">
             <Building2 className="h-5 w-5 text-blue-600" />
             <span className="font-display font-extrabold text-xs tracking-tight text-white uppercase">
-              Balaji CMS
+              Vikon CMS
             </span>
           </Link>
           <button

@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
         <div className="text-center mb-8">
           <Building2 className="h-10 w-10 text-blue-600 mx-auto mb-3" />
           <h2 className="text-2xl font-extrabold font-display text-white tracking-tight">
-            Sri Balaji CMS
+            Vikon CMS
           </h2>
           <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">
             Administrator Portal
@@ -68,7 +68,7 @@ export default function AdminLoginPage() {
         {/* Demo Credentials Tip */}
         <div className="mb-6 p-4 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-400 space-y-1">
           <p className="font-bold text-emerald-500">Demo Login Mode Fallback:</p>
-          <p>Email: <code className="text-white">admin@balajiconstructions.com</code></p>
+          <p>Email: <code className="text-white">admin@vikonconstructions.com</code></p>
           <p>Password: <code className="text-white">admin</code></p>
         </div>
 

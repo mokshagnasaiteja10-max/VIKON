@@ -57,8 +57,10 @@ export default function Header({ settings }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo / Company Name */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <Building2 className="h-8 w-8 text-blue-600 transition-transform duration-300 group-hover:scale-110" />
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="bg-white p-1 rounded-md h-10 w-10 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+              <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
+            </div>
             <div className="flex flex-col">
               <span className="font-display font-extrabold text-base sm:text-lg tracking-tight text-white group-hover:text-emerald-500 transition-colors">
                 {settings.companyName}
