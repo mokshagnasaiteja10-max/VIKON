@@ -3,9 +3,9 @@ import { Property, Project, Testimonial, SiteSettings } from "../types";
 export const initialSiteSettings: SiteSettings = {
   companyName: "Vikon Constructions",
   logoUrl: "/images/logo.png",
-  phone: "+91 98765 43210",
-  whatsapp: "919876543210", // No +, spaces or dashes
-  email: "info@vikonconstructions.com",
+  phone: "094919 75555",
+  whatsapp: "919491975555", // No +, spaces or dashes
+  email: "chaitanyavarma@vikongroup.in",
   address: "D.No. 4-12-85/A, Rayalam Road, Near Asr Nagar, Bhimavaram, Andhra Pradesh - 534204",
   heroTitle: "Building Premium Landmarks in Bhimavaram",
   heroSubtitle: "Turnkey Civil Construction, Deep Pile Foundations, and Premium 2 BHK / 3 BHK Vaastu-Compliant Apartments built with unmatched quality and trust.",

@@ -63,7 +63,7 @@ export async function POST(request: Request) {
           },
           body: JSON.stringify({
             from: "onboarding@resend.dev",
-            to: "info@balajiconstructions.com", // Standard destination email
+            to: "chaitanyavarma@vikongroup.in", // Standard destination email
             subject: `New Lead: ${newLead.full_name} - ${newLead.service}`,
             html: `
               <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
