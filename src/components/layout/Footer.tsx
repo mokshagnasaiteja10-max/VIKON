@@ -93,15 +93,8 @@ export default function Footer({ settings }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+        <div className="pt-8 border-t border-slate-900 text-center text-xs text-slate-500">
           <p>© {currentYear} {settings.companyName}. All Rights Reserved.</p>
-          <div className="flex space-x-4 mt-4 sm:mt-0">
-            <Link href="/admin/login" className="hover:text-blue-600 transition-colors font-medium">
-              Admin Portal
-            </Link>
-            <span className="text-slate-800">|</span>
-            <span className="text-slate-600">Designed with Integrity & Quality</span>
-          </div>
         </div>
       </div>
     </footer>
