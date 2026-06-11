@@ -70,8 +70,8 @@ export default function AdminLoginPage() {
         {/* Demo Credentials Tip */}
         <div className="mb-6 p-4 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-400 space-y-1">
           <p className="font-bold text-emerald-500">Demo Login Mode Fallback:</p>
-          <p>Email: <code className="text-white">admin@vikonconstructions.com</code></p>
-          <p>Password: <code className="text-white">admin</code></p>
+          <p>Email: <code className="text-slate-900 font-semibold">admin@vikonconstructions.com</code></p>
+          <p>Password: <code className="text-slate-900 font-semibold">admin</code></p>
         </div>
 
         {/* Form */}

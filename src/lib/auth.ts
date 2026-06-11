@@ -32,6 +32,18 @@ export const authService = {
   isFirebase: isFirebaseEnabled,
 
   async login(email: string, password: string): Promise<User> {
+    // Demo user fallback: bypass Firebase for local testing/dev
+    if (email === DEMO_USER_EMAIL && password === DEMO_USER_PASSWORD) {
+      currentMockUser = { email, isDemo: true };
+      if (typeof window !== "undefined") {
+        localStorage.setItem(DEMO_SESSION_KEY, email);
+        // Set a session cookie so middleware/API routes can see it too
+        document.cookie = `${DEMO_SESSION_KEY}=true; path=/; max-age=86400; SameSite=Strict`;
+      }
+      listeners.forEach(cb => cb(currentMockUser));
+      return currentMockUser;
+    }
+
     if (isFirebaseEnabled && auth) {
       const credential = await signInWithEmailAndPassword(auth, email, password);
       if (typeof window !== "undefined") {
@@ -39,40 +51,42 @@ export const authService = {
       }
       return { email: credential.user.email || email };
     } else {
-      // Mock login
-      if (email === DEMO_USER_EMAIL && password === DEMO_USER_PASSWORD) {
-        currentMockUser = { email, isDemo: true };
-        if (typeof window !== "undefined") {
-          localStorage.setItem(DEMO_SESSION_KEY, email);
-          // Set a session cookie so middleware/API routes can see it too
-          document.cookie = `${DEMO_SESSION_KEY}=true; path=/; max-age=86400; SameSite=Strict`;
-        }
-        listeners.forEach(cb => cb(currentMockUser));
-        return currentMockUser;
-      } else {
-        throw new Error("Invalid admin credentials");
-      }
+      throw new Error("Invalid admin credentials");
     }
   },
 
   async logout(): Promise<void> {
-    if (isFirebaseEnabled && auth) {
-      await fbSignOut(auth);
-      if (typeof window !== "undefined") {
-        document.cookie = `${DEMO_SESSION_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Strict`;
-      }
-    } else {
-      currentMockUser = null;
-      if (typeof window !== "undefined") {
-        localStorage.removeItem(DEMO_SESSION_KEY);
-        // Clear cookie
-        document.cookie = `${DEMO_SESSION_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Strict`;
-      }
-      listeners.forEach(cb => cb(null));
+    currentMockUser = null;
+    if (typeof window !== "undefined") {
+      localStorage.removeItem(DEMO_SESSION_KEY);
+      // Clear cookie
+      document.cookie = `${DEMO_SESSION_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Strict`;
     }
+
+    if (isFirebaseEnabled && auth) {
+      try {
+        await fbSignOut(auth);
+      } catch (e) {
+        console.error("Firebase signout error:", e);
+      }
+    }
+    listeners.forEach(cb => cb(null));
   },
 
   onStateChange(callback: AuthCallback): () => void {
+    if (typeof window !== "undefined" && !currentMockUser) {
+      const stored = localStorage.getItem(DEMO_SESSION_KEY);
+      if (stored === DEMO_USER_EMAIL) {
+        currentMockUser = { email: stored, isDemo: true };
+      }
+    }
+
+    if (currentMockUser) {
+      // If we are in local mock user session, bypass Firebase auth state listener
+      callback(currentMockUser);
+      return () => {};
+    }
+
     if (isFirebaseEnabled && auth) {
       return onAuthStateChanged(auth, (fbUser) => {
         if (fbUser) {
@@ -81,10 +95,15 @@ export const authService = {
           }
           callback({ email: fbUser.email || "admin" });
         } else {
-          if (typeof window !== "undefined") {
-            document.cookie = `${DEMO_SESSION_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Strict`;
+          // If mock user was set in the meantime
+          if (currentMockUser) {
+            callback(currentMockUser);
+          } else {
+            if (typeof window !== "undefined") {
+              document.cookie = `${DEMO_SESSION_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Strict`;
+            }
+            callback(null);
           }
-          callback(null);
         }
       });
     } else {
@@ -99,6 +118,15 @@ export const authService = {
   },
 
   getCurrentUser(): User | null {
+    if (typeof window !== "undefined" && !currentMockUser) {
+      const stored = localStorage.getItem(DEMO_SESSION_KEY);
+      if (stored === DEMO_USER_EMAIL) {
+        currentMockUser = { email: stored, isDemo: true };
+      }
+    }
+    if (currentMockUser) {
+      return currentMockUser;
+    }
     if (isFirebaseEnabled && auth) {
       const fbUser = auth.currentUser;
       return fbUser ? { email: fbUser.email || "admin" } : null;

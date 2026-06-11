@@ -122,7 +122,7 @@ export default function AdminLeadsPage() {
                   onClick={() => setSelectedLead(lead)}
                   className={`w-full text-left p-4 hover:bg-slate-850/40 transition-colors block border-l-4 ${
                     selectedLead?.id === lead.id
-                      ? "border-blue-600 bg-slate-800/30"
+                      ? "border-[#006d38] bg-slate-50"
                       : "border-transparent"
                   }`}
                 >
