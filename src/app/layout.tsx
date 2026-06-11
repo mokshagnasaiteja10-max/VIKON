@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import WhatsAppWidget from "@/components/layout/WhatsAppWidget";
+import RootLayoutClient from "@/components/layout/RootLayoutClient";
 import { getSiteSettings } from "@/lib/db-server";
 
 const inter = Inter({
@@ -51,10 +49,9 @@ export default async function RootLayout({
       className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-slate-50 dark:bg-luxury-bg text-slate-900 dark:text-slate-100 transition-colors duration-300">
-        <Header settings={settings} />
-        <main className="flex-grow">{children}</main>
-        <Footer settings={settings} />
-        <WhatsAppWidget settings={settings} />
+        <RootLayoutClient settings={settings}>
+          {children}
+        </RootLayoutClient>
       </body>
     </html>
   );
