@@ -34,6 +34,9 @@ export const authService = {
   async login(email: string, password: string): Promise<User> {
     if (isFirebaseEnabled && auth) {
       const credential = await signInWithEmailAndPassword(auth, email, password);
+      if (typeof window !== "undefined") {
+        document.cookie = `${DEMO_SESSION_KEY}=true; path=/; max-age=86400; SameSite=Strict`;
+      }
       return { email: credential.user.email || email };
     } else {
       // Mock login
@@ -55,6 +58,9 @@ export const authService = {
   async logout(): Promise<void> {
     if (isFirebaseEnabled && auth) {
       await fbSignOut(auth);
+      if (typeof window !== "undefined") {
+        document.cookie = `${DEMO_SESSION_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Strict`;
+      }
     } else {
       currentMockUser = null;
       if (typeof window !== "undefined") {
@@ -70,8 +76,14 @@ export const authService = {
     if (isFirebaseEnabled && auth) {
       return onAuthStateChanged(auth, (fbUser) => {
         if (fbUser) {
+          if (typeof window !== "undefined") {
+            document.cookie = `${DEMO_SESSION_KEY}=true; path=/; max-age=86400; SameSite=Strict`;
+          }
           callback({ email: fbUser.email || "admin" });
         } else {
+          if (typeof window !== "undefined") {
+            document.cookie = `${DEMO_SESSION_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Strict`;
+          }
           callback(null);
         }
       });
