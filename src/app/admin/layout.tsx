@@ -87,8 +87,8 @@ export default function AdminLayout({
     <div className="min-h-screen bg-[#F5F5F5] flex text-slate-800">
       
       {/* Sidebar for Desktop */}
-      <aside className="hidden md:flex flex-col w-64 bg-[#003366] border-r border-[#002244] shrink-0 text-white">
-        <div className="h-20 flex items-center px-6 border-b border-[#002244]">
+      <aside className="hidden md:flex flex-col w-64 bg-[#003575] border-r border-[#002756] shrink-0 text-white">
+        <div className="h-20 flex items-center px-6 border-b border-[#002756]">
           <Link href="/" className="flex items-center space-x-3">
             <div className="bg-white p-1 rounded-md h-8 w-8 flex items-center justify-center shrink-0">
               <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
@@ -110,11 +110,11 @@ export default function AdminLayout({
                 href={item.href}
                 className={`flex items-center px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
                   active
-                    ? "bg-[#FFD700] text-[#003366] font-bold"
+                    ? "bg-[#FFD700] text-[#003575] font-bold border-l-2 border-[#006d38] rounded-l-none"
                     : "text-blue-100 hover:text-white hover:bg-blue-800/50"
                 }`}
               >
-                <Icon className={`h-4.5 w-4.5 mr-3 ${active ? "text-[#003366]" : "text-blue-300"}`} />
+                <Icon className={`h-4.5 w-4.5 mr-3 ${active ? "text-[#003575]" : "text-blue-300"}`} />
                 {item.name}
               </Link>
             );
@@ -122,8 +122,8 @@ export default function AdminLayout({
         </nav>
  
         {/* User Card & Logout */}
-        <div className="p-4 border-t border-[#002244] space-y-3">
-          <div className="px-4 py-2 bg-[#002244]/50 rounded-lg text-xs truncate">
+        <div className="p-4 border-t border-[#002756] space-y-3">
+          <div className="px-4 py-2 bg-[#002756]/50 rounded-lg text-xs truncate">
             <p className="text-blue-200">Logged in as:</p>
             <p className="font-bold text-white truncate">{currentUser.email}</p>
           </div>
@@ -140,7 +140,7 @@ export default function AdminLayout({
       {/* Main Content Area */}
       <div className="flex-grow flex flex-col min-w-0 bg-[#F9FAFB]">
         {/* Top bar for Mobile */}
-        <header className="md:hidden h-16 bg-[#003366] border-b border-[#002244] px-4 flex items-center justify-between z-30 text-white">
+        <header className="md:hidden h-16 bg-[#003575] border-b border-[#002756] px-4 flex items-center justify-between z-30 text-white">
           <Link href="/" className="flex items-center space-x-3">
             <div className="bg-white p-1 rounded-md h-7 w-7 flex items-center justify-center shrink-0">
               <img src="/images/logo.png" alt="Vikon Constructions Logo" className="max-h-full max-w-full object-contain" />
@@ -165,12 +165,12 @@ export default function AdminLayout({
           onClick={() => setSidebarOpen(false)}
         >
           <div
-            className={`w-64 h-full bg-[#003366] border-r border-[#002244] flex flex-col transition-transform duration-300 transform text-white ${
+            className={`w-64 h-full bg-[#003575] border-r border-[#002756] flex flex-col transition-transform duration-300 transform text-white ${
               sidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="h-16 flex items-center px-6 border-b border-[#002244] justify-between">
+            <div className="h-16 flex items-center px-6 border-b border-[#002756] justify-between">
               <span className="font-display font-extrabold text-sm tracking-tight text-white uppercase">
                 Navigation
               </span>
@@ -190,18 +190,18 @@ export default function AdminLayout({
                     onClick={() => setSidebarOpen(false)}
                     className={`flex items-center px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
                       active
-                        ? "bg-[#FFD700] text-[#003366] font-bold"
+                        ? "bg-[#FFD700] text-[#003575] font-bold border-l-2 border-[#006d38] rounded-l-none"
                         : "text-blue-100 hover:text-white hover:bg-blue-800/50"
                     }`}
                   >
-                    <Icon className={`h-4.5 w-4.5 mr-3 ${active ? "text-[#003366]" : "text-blue-300"}`} />
+                    <Icon className={`h-4.5 w-4.5 mr-3 ${active ? "text-[#003575]" : "text-blue-300"}`} />
                     {item.name}
                   </Link>
                 );
               })}
             </nav>
  
-            <div className="p-4 border-t border-[#002244] space-y-3">
+            <div className="p-4 border-t border-[#002756] space-y-3">
               <button
                 onClick={handleLogout}
                 className="flex items-center w-full px-4 py-2.5 bg-rose-600/20 hover:bg-rose-600 text-rose-200 hover:text-white rounded-lg text-xs font-semibold transition-colors"

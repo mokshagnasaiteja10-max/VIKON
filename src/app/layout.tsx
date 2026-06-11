@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import RootLayoutClient from "@/components/layout/RootLayoutClient";
 import { getSiteSettings } from "@/lib/db-server";
@@ -10,9 +10,9 @@ const inter = Inter({
   display: "swap",
 });
 
-const outfit = Outfit({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -46,7 +46,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${outfit.variable} h-full antialiased`}
+      className={`${inter.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-slate-50 dark:bg-luxury-bg text-slate-900 dark:text-slate-100 transition-colors duration-300">
         <RootLayoutClient settings={settings}>
